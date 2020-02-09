@@ -43,7 +43,7 @@ public class LetterBuilder {
 						.append(buildPeakPart(n, row))
 						.append(buildEmptyPart(n - row));
 		
-		return stringBuilder;
+		return currentSbBuilder;
 	}
 
 	private String buildPeakPart(int n, int row) {
@@ -60,17 +60,20 @@ public class LetterBuilder {
 		return appendStringNTimes(EMPTY_SYMBOL, times);
 	}
 
-
 	private StringBuilder buildMLowerPart(int n, int row) {
 		StringBuilder currentSbBuilder = new StringBuilder();
 
 		// ????
 		currentSbBuilder.append(buildEmptyPart(n - row))
+//						.append(buildShallowPart(n, row))
 						.append(appendStringNTimes(DRAW_SYMBOL, n))
 						.append(buildEmptyPart(n - (n - row) * 2))
+						
 						.append(buildShallowPart(n, row))
+						
 						.append(buildEmptyPart(n - (n - row)*2))
 						.append(appendStringNTimes(DRAW_SYMBOL, n))
+//						.append(buildShallowPart(n, row))
 						.append(buildEmptyPart(n - row));
 						
 		return currentSbBuilder;
@@ -90,7 +93,8 @@ public class LetterBuilder {
 		if (times < 0) {
 			return "";
 		}
-			return str.repeat(times);
+		
+		return str.repeat(times);
 	}
 
 }
